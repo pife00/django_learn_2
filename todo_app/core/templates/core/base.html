@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
+
+    <title> {% block title %} {% endblock %} | Todo App </title>
+</head>
+<body>
+    <nav>
+        <div class=" py-3 px-3 flex justify-between bg-gray-100 
+        
+       border-b border-gray-300" >
+            <div>
+                <h2>Todo App</h2>
+            </div>
+            <div>
+                <a href="">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock  %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
+
+</body>
+</html>
