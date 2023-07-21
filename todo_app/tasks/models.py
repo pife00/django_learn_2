@@ -13,13 +13,17 @@ class Categories(models.Model):
 
 class Champion(models.Model):
     category = models.ForeignKey(Categories,related_name='items',on_delete=models.CASCADE)
-    name = models.CharField(max_length=255),
-    descrption = models.CharField(blank=True,null=True),
-    imgUrl = models.CharField(max_length=255),
-    price = models.FloatField(),
+    name = models.CharField(max_length=255)
+    descrption = models.TextField(blank=True,null=True)
+    imgUrl = models.CharField(max_length=255)
     is_OP = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    created_by = models.ForeignKey(User,related_name='items',on_delete=models.CASCADE),
+    created_by = models.ForeignKey(User,related_name='items',on_delete=models.CASCADE)
+
+    def __str__(self):
+        class Meta:
+            ordering = ('name',)
+        return self.name
     
     
     

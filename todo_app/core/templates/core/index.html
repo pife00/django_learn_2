@@ -7,7 +7,28 @@ Welcome to Todo App
 {% block content %}
 
 <div>
-    <h1 class="text-2xl text-center font-semibold mt-6" >To - Do</h1>
+    <h1 class="text-2xl text-center font-semibold mt-6 mb-6" >To - Do</h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 px-3">
+       {% for item in items %}
+       <div class="bg-white max-w-sm border border-gray-200 rounded-lg" > 
+        <a href="#" >
+           <img  class="rounded-lg" src="{{ item.imgUrl }} " />
+        </a>
+  
+        <div class="p-5 grid ">
+           <h3 class="mb-2 text-2xl text-gray-900 font-bold tracking-tight" >
+              {{item.name}}
+           </h3>
+           <p class="mb-3 text-gray-700" >
+              {{item.descrption}}
+           </p>
+  
+        </div>
+  
+  
+       </div>
+       {% endfor %}
+    </div>
 </div>
 
 
