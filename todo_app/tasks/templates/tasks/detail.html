@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+{{item.name}}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="text-4xl font-semibold text-center text-gray-900 mt-6 mb-6" > {{item.name}} </h1>
+<div class="w-1/2 justify-center mx-auto" >
+    <img class="mb-6" src="{{item.imgUrl}}" alt="">
+    <p class="text-gray-700 text-normal " >
+        {{item.descrption}}
+    </p>
+    <div>
+        
+    </div>
+</div>
+
+{% endblock %}
