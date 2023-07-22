@@ -14,7 +14,7 @@ class Categories(models.Model):
 class Champion(models.Model):
     category = models.ForeignKey(Categories,related_name='items',on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    descrption = models.TextField(blank=True,null=True)
+    description = models.TextField(blank=True,null=True)
     imgUrl = models.CharField(max_length=255)
     is_OP = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)

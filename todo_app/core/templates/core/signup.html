@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block content %}
+
+<h1 class="font-semibold text-2xl text-gray-900 text-center mt-6 mb-6" >Sign Up</h1>
+
+<div class="mx-auto max-w-sm bg-gray-200 p-3 flex justify-center">
+    <div>
+        <form method="post" action=".">
+            {% csrf_token  %}
+            <div class="space-y-4" >
+                {{form_non_field_errors}}
+
+                <div class="mb-3 block" >
+                    <label for="id_username">Username</label>
+                    {{form.username}}
+                </div>
+
+
+                <div class="mb-3 block" >
+                    <label for="id_email">Email</label>
+                    {{form.email}}
+                </div>
+
+                <div class="mb-3 block" >
+                    <label for="id_password1">Password</label>
+                    {{form.password1}}
+                </div>
+
+                <div class="mb-3 block" >
+                    <label for="id_password2">Repeat password</label>
+                    {{form.password2}}
+                </div>
+
+                {% if form.errors or form.non_field_errors %}
+                <div class="bg-red-400 p-3 rounded-xl " >
+                    {% for field in form %}
+                        <strong>
+                            {{field.errors}}
+                        </strong>
+                    {% endfor %}
+                </div>
+                    {% endif %}
+ 
+                <button class="rounded-xl w-full p-3 text-white font-semibold bg-blue-500 hover:bg-blue-700"  type="submit">Send</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

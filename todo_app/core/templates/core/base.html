@@ -16,9 +16,10 @@
                 <h2 class="text-2xl font-semibold" >Todo App</h2>
             </div>
             <div class="space-x-3" >
-                <a class="text-xl font-semibold hover:text-gray-500" href="">Home</a>
+                <a class="text-xl font-semibold hover:text-gray-500" href="/">Home</a>
+                <a class="text-xl font-semibold hover:text-gray-500" href="{% url 'tasks:new-champion' %}">New Champion</a>
                 <a class="text-xl font-semibold hover:text-gray-500" href="">DashBoard</a>
-                <a class="px-4 py-3 rounded-xl bg-blue-500 hover:bg-blue-700 text-white font-semibold" href="">Sign Up</a>
+                <a class="px-4 py-3 rounded-xl bg-blue-500 hover:bg-blue-700 text-white font-semibold" href="/signup">Sign Up</a>
             </div>
         </div>
     </nav>
