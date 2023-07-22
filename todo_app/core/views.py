@@ -3,7 +3,7 @@ from django.shortcuts import render,get_list_or_404,redirect
 # Create your views here.
 
 from tasks.models import Champion
-from . forms import SingUpForm
+from . forms import SingUpForm,LoginForm
 
 def index(request):
     item = Champion.objects.all()
