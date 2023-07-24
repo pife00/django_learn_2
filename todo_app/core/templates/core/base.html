@@ -17,11 +17,12 @@
             </div>
             <div class="space-x-3" >
                 <a class="text-xl font-semibold hover:text-gray-500" href="/">Home</a>
-                <a class="text-xl font-semibold hover:text-gray-500" href="{% url 'tasks:new-champion' %}">New Champion</a>
-                <a class="text-xl font-semibold hover:text-gray-500" href="">DashBoard</a>
+                <a class="text-xl font-semibold hover:text-gray-500" href="{% url 'tasks:new-champion' %}">Add</a>
                 {% if request.user.is_authenticated %}
                 <a class="px-4 py-3 rounded-xl bg-blue-500 hover:bg-blue-700 text-white font-semibold" href="/dashboard">DashBoard</a>
+                <a class="px-4 py-3 rounded-xl bg-gray-500 hover:bg-gray-700 text-white font-semibold" href="{% url 'logout' %}">Log Out</a>
                 {% else %}
+                <a class="px-4 py-3 rounded-xl bg-teal-500 hover:bg-teal-700 text-white font-semibold" href="/login/">Login</a>
                 <a class="px-4 py-3 rounded-xl bg-blue-500 hover:bg-blue-700 text-white font-semibold" href="/signup">Sign Up</a>
                 {% endif %}
             </div>
