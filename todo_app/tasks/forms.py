@@ -1,7 +1,7 @@
 
 from django import forms
 
-from .models import Champion
+from .models import Champion,Favorites
 
 class ChampionForm(forms.ModelForm):
     class Meta:
@@ -22,5 +22,4 @@ class ChampionForm(forms.ModelForm):
                 "class":"mt-2 w-full p-3 border border-gray-300 block rounded-xl"
             })
         }
-
     

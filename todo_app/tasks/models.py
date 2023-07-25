@@ -13,7 +13,7 @@ class Categories(models.Model):
 
 class Champion(models.Model):
     category = models.ForeignKey(Categories,related_name='items',on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255,unique=True)
     description = models.TextField(blank=True,null=True)
     imgUrl = models.CharField(max_length=255)
     is_OP = models.BooleanField(default=False)
@@ -26,10 +26,9 @@ class Champion(models.Model):
         return self.name
 
 class Favorites(models.Model):
-        
         is_active = models.BooleanField(default=False)
         user = models.ForeignKey(User,related_name="champion_favorite",on_delete=models.CASCADE)
-        name = models.ForeignKey(Champion,related_name='champion_name',on_delete=models.CASCADE)
+        name = models.ForeignKey(Champion, to_field='name', related_name='champion_name',on_delete=models.CASCADE)
         class Meta:
             ordering = ("name",)
            
