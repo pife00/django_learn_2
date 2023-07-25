@@ -7,8 +7,11 @@ from .forms import ChampionForm
 
 def detail(request,name):
     item = get_object_or_404(Champion, name=name)
+    userFavorite = Favorites.objects.filter(name=name,user=request.user)
+        
     return render(request,'tasks/detail.html',{
-        'item':item
+        'item':item,
+        'is_favorite': userFavorite.exists()
     })
 
 def newChampion (request):
