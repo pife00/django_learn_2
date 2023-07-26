@@ -10,8 +10,11 @@
 <div class="w-1/2 justify-center mx-auto" >
     <img class="" src="{{item.imgUrl}}" alt="">
 
+    
+
     {% if request.user.is_authenticated %}
     <div class="flex justify-center">
+        
         {% if is_favorite %}
         <a href="{% url 'tasks:favorite' item.name %}" class="p-2 hover:bg-gray-200"  >
             <svg style="color:blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">

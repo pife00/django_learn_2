@@ -7,13 +7,19 @@ from .forms import ChampionForm
 
 def detail(request,name):
     item = get_object_or_404(Champion, name=name)
-    userFavorite = Favorites.objects.filter(name=name,user=request.user)
-        
+    userFavorite = False
+    if(request.user.is_authenticated):
+        favorite = Favorites.objects.filter(name=name,user=request.user)
+        if favorite.exists():
+            first = favorite.first()
+            userFavorite = first.is_active
+
     return render(request,'tasks/detail.html',{
         'item':item,
-        'is_favorite': userFavorite.exists()
+        'is_favorite':userFavorite   
     })
 
+@login_required
 def newChampion (request):
     if request.method == "POST":
         form = ChampionForm(request.POST,request.FILES)
@@ -31,12 +37,20 @@ def newChampion (request):
 @login_required
 def favorite(request,name):
     champion = get_object_or_404(Champion,name=name)
-    item = Favorites(user=request.user,name=champion,is_active=True)
-    item.save()
-    """ //item = get_object_or_404(Favorites,name=name)
-    print(item)
-     """
-    return redirect('core:index')
+    itemExist = Favorites.objects.filter(name=name,user=request.user)
+
+    if itemExist.exists():
+        favorite = itemExist.first()
+        favorite.is_active = not favorite.is_active
+        itemExist.update(is_active = favorite.is_active)
+
+    else:
+        item = Favorites(user=request.user,name=champion,is_active=True)
+        item.save()
+
+    return redirect('tasks:detail',name=name)
     
-    
+def favoritesList(request):
+    items = Favorites.objects.all()
+    return render(request,'tasks/favorites_list.html')  
     

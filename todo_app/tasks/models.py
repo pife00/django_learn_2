@@ -31,6 +31,11 @@ class Favorites(models.Model):
         name = models.ForeignKey(Champion, to_field='name', related_name='champion_name',on_delete=models.CASCADE)
         class Meta:
             ordering = ("name",)
+
+        def __str__(self):
+
+            return "{} => {}".format(self.user.username,self.name.name)
+
     
 
     
