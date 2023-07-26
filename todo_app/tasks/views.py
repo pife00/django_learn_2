@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render,get_object_or_404
 from django.contrib.auth.decorators import login_required 
-
+from django.db import connection
 # Create your views here.
 from .models import Champion,Favorites
 from .forms import ChampionForm
@@ -51,6 +51,11 @@ def favorite(request,name):
     return redirect('tasks:detail',name=name)
     
 def favoritesList(request):
-    items = Favorites.objects.all()
-    return render(request,'tasks/favorites_list.html')  
+    query = "SELECT name_id,count(is_active) as Cantidad FROM tasks_favorites WHERE is_active = True GROUP BY name_id ORDER BY Cantidad DESC;" 
+    with connection.cursor() as cursor:
+        cursor.execute(query)
+        result = cursor.fetchall()
+    return render(request,'tasks/favorites_list.html',{
+        'items':result
+    })  
     
