@@ -58,4 +58,9 @@ def favoritesList(request):
     return render(request,'tasks/favorites_list.html',{
         'items':result
     })  
-    
+
+@login_required
+def delete(request,pk):
+    item = get_object_or_404(Champion,pk=pk,created_by=request.user)
+    item.delete()
+    return redirect('/')

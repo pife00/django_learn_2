@@ -5,6 +5,7 @@ from . import views
 app_name = 'tasks'
 
 urlpatterns = [
+    path('<int:pk>/delete/',views.delete,name="delete"),
     path('<str:name>/',views.detail,name='detail'),
     path('add/new-champion/',views.newChampion,name="new-champion"),
     path('favorite/favorites-list/',views.favoritesList,name="list"),
